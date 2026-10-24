@@ -1,0 +1,242 @@
+/**
+ * CSS custom properties + utility classes for the design system.
+ * Imported from app/globals.css.
+ */
+
+:root {
+  /* Color */
+  --background: #0c0b0a;
+  --foreground: #f4efe6;
+  --muted: #a89f93;
+  --muted-foreground: #8a8278;
+  --card: #141210;
+  --card-elevated: #1a1714;
+  --border: rgba(201, 169, 110, 0.22);
+  --border-strong: rgba(201, 169, 110, 0.4);
+  --primary: #c9a96e;
+  --primary-foreground: #0c0b0a;
+  --accent: #e8d5a8;
+  --ring: #c9a96e;
+  --destructive: #c45c5c;
+  --destructive-foreground: #f4efe6;
+  --success: #6b9b7a;
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+  --text-display: clamp(3rem, 8vw, 6rem);
+  --text-h1: clamp(2.5rem, 5vw, 3.75rem);
+  --text-h2: clamp(2rem, 4vw, 3rem);
+  --text-h3: clamp(1.5rem, 3vw, 1.875rem);
+  --text-h4: 1.25rem;
+  --text-body: 1.05rem;
+  --text-body-sm: 0.925rem;
+  --text-caption: 0.78rem;
+  --text-overline: 0.75rem;
+  --leading-tight: 1.1;
+  --leading-snug: 1.35;
+  --leading-normal: 1.65;
+  --tracking-overline: 0.2em;
+
+  /* Spacing */
+  --space-section-sm: 4rem;
+  --space-section-md: 6rem;
+  --space-section-lg: 7rem;
+  --container-px: 1.25rem;
+  --container-max: 72rem;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 40px rgba(201, 169, 110, 0.12);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration: 250ms;
+  --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Layout */
+  --header-height: 4.5rem;
+
+  /* Z-index */
+  --z-header: 40;
+  --z-overlay: 50;
+  --z-modal: 50;
+  --z-skip: 100;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-px: 2rem;
+  }
+}
+
+/* ——— Typography utilities ——— */
+.text-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+}
+
+.text-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+
+.text-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+}
+
+.text-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  line-height: var(--leading-snug);
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-normal);
+}
+
+.text-overline {
+  font-size: var(--text-overline);
+  font-weight: 500;
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* ——— Spacing utilities ——— */
+.section-y {
+  padding-block: var(--space-section-sm);
+}
+
+@media (min-width: 768px) {
+  .section-y {
+    padding-block: var(--space-section-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-block: var(--space-section-lg);
+  }
+}
+
+/* ——— Shadow utilities ——— */
+.shadow-token-sm {
+  box-shadow: var(--shadow-sm);
+}
+.shadow-token-md {
+  box-shadow: var(--shadow-md);
+}
+.shadow-token-lg {
+  box-shadow: var(--shadow-lg);
+}
+.shadow-token-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+/* ——— Motion utilities ——— */
+.transition-token {
+  transition-property: color, background-color, border-color, opacity, transform,
+    box-shadow;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--ease-out);
+}
+
+.transition-token-fast {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-out);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration) var(--ease-out) both;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-accordion-down,
+  .animate-accordion-up {
+    animation: none !important;
+  }
+
+  .transition-token,
+  .transition-token-fast {
+    transition: none !important;
+  }
+}
